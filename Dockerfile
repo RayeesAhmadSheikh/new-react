@@ -1,7 +1,11 @@
-FROM node:10-alpine as build
-RUN mkdir /app
-WORKDIR /app
-COPY package.json /app
+FROM node:16
+
+WORKDIR /usr/src/app
+
+COPY package*.json index.js ./
+
 RUN npm install
-COPY . /app
-RUN npm run build
+
+EXPOSE 3000
+
+CMD ["node", "run", "dev]
